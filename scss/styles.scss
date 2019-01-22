@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css?family=Meddon|Open+Sans');
+
+//color variables
+$white: #fff;
+$top-teal: #7de6cf;
+$ubiqui-blue: #74daf7;
+$starter-blue: hsl(193, 100%, 50%);
+$error-red: #f77474;
+$warning-orange: complement($ubiqui-blue);
+$info-purple: #965dad;
+$success-green: #65ba64;
+$color-text: #868686;
+$dark-teal: #3fabca;
+
+//fonts and typography
+$meddon: 'Meddon', cursive;
+$open-sans: 'Open Sans', sans-serif;
+$bold: 700;
+
+//layout variables
+$max-width: 1400px;
+$gutter: 5px;
+
+//media query variables
+$media-break: 769px;
+
+
+// Maps
+  $themes: (
+  'default': $ubiqui-blue,
+  'success': $success-green,
+  'error': $error-red,
+  'warning': $warning-orange,
+  'info': $info-purple,
+  );
+
+  $breakpoints: (
+    'xs': 575px,
+    'sm': 576px,
+   'med': 768px,
+    'lg': 992px,
+    );
+
+    $gridColor: (
+    'col--12': $top-teal,
+    'col--3': lighten($info-purple, 15%),
+    'col--4': $ubiqui-blue,
+    'col--5': lighten($success-green, 15%),
+    'col--6': $dark-teal,
+    'col--7': complement($top-teal),
+    'col--8': lighten($warning-orange, 10%),
+    );
+    //Center content
+    @mixin center($w) {
+      width: $w;
+      max-width: $max-width;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    //Apply flexbox to containers & items//
+    @mixin flex-it (
+      $disp: flex,
+      $dir: null,
+      $wrap: null,
+      $just: null,
+      $basis: null,
+      $flex: null) {
+        display: $disp ;
+        flex-direction: $dir;
+        flex-wrap: $wrap;
+        justify-content: $just;
+        flex-basis: $basis;
+        flex-grow: $flex;
+        margin: 5px;
+        text-align: center;
+        @content;
+    }
+
+    body {
+      @include center(100%);
+      padding: 0;
+      font-family: $open-sans;
+      color: #444;
+      background: #e5dfd9 ;
+    }
+    .container {
+      width: 95%;
+      margin: 10px auto;
+      background-color: #fff8f2;
+      border: 5px double #898582;
+    }
+
+    .title, h2 {
+      @include center(90%);
+      margin-top: 20px;
+      text-align: center;
+      font-family: 'Meddon', cursive;
+      font-size: 1.8em;
+    }
+    p {
+      text-align: center;
+      font-family: $open-sans;
+    }
+
+    ul {
+      @include flex-it($wrap: wrap, $just: center);
+      list-style-type: none;
+    }
+      .awesomePic {
+      margin-top: 30px;
+      object-fit: cover;
+      object-position: 0 50%;
+      border: 12px double #898582;
+      border-radius: 50%;
+      width: 200px;
+      height: auto;
+    }
+    button {
+      @include flex-it($just: center);
+      @include center(10%);
+      background-color: (rgba(137, 133, 130, .7));
+      padding: 10px;
+      border-radius: 30px;
+      border: 5px double white;
+    }
